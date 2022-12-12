@@ -1,6 +1,8 @@
 //declaring variables
 var taskwrapper = $('#taskbox');
 var startOfBusiness = moment(09, 'HH');
+var currentTime = moment().format('HH');
+console.log(currentTime);
 var tasksToLoad = [];
 tasksToLoad = JSON.parse(localStorage.getItem('savedTasks'));
 
@@ -20,7 +22,7 @@ while (startOfBusiness.hour() < 18) {
             ${startOfBusiness.format('ha')}
           </p>
         </div>
-        <div class='col-10'>
+        <div class='col-10' id = 'Line${startOfBusiness.format('H')}'>
           <textarea id='text' data-id = '${startOfBusiness.format('H')}' name="text">${tasksToLoad[(startOfBusiness.format('H')) - 9]}</textarea>
         </div>
         <div class='col-1'>
@@ -32,13 +34,25 @@ while (startOfBusiness.hour() < 18) {
 }
 
 //change line detailes based on time
-// while (startOfBusiness.hour() < 18) {
-//   if{
+for(hourCount = 9; hourCount < 18; hourCount ++) {
+  var timeA = currentTime;
+  if( timeA > hourCount){
+    console.log(timeA);
+    var line = document.querySelector(`#Line${hourCount}`);
+    line.classList.add('past');
+  }
 
-//   }
+  else if( timeA < hourCount)
+      {console.log(timeA);
+      var line = document.querySelector(`#Line${hourCount}`);
+      line.classList.add('future');}
 
-//   startOfBusiness.add(1, 'hours');
-// }
+  else {console.log(timeA);
+    var line = document.querySelector(`#Line${hourCount}`);
+    line.classList.add('present');
+  }
+
+}
 
 //declaring variables to store data for saveTask function
 var tasks= [];
