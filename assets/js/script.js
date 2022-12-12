@@ -1,11 +1,18 @@
+//declaring variables
 var taskwrapper = $('#taskbox');
 var startOfBusiness = moment(09, 'HH');
+var tasksToLoad = [];
 tasksToLoad = JSON.parse(localStorage.getItem('savedTasks'));
-console.log(tasksToLoad);
+
+if(tasksToLoad == null){
+  tasksToLoad = [];
+  for(fill = 0; fill < 9; fill ++){
+  tasksToLoad[fill] = 'No Task';
+  };
+};
 
 //create and fill HTML structure
 while (startOfBusiness.hour() < 18) {
-  console.log(startOfBusiness.format('ha'));
   taskwrapper.append(
     `<div class='row'>
         <div class='col-1'</div>
@@ -25,28 +32,31 @@ while (startOfBusiness.hour() < 18) {
 }
 
 //change line detailes based on time
+// while (startOfBusiness.hour() < 18) {
+//   if{
 
-//set variables to store
+//   }
+
+//   startOfBusiness.add(1, 'hours');
+// }
+
+//declaring variables to store data for saveTask function
 var tasks= [];
 var tasksToLoad= [];
 var taskInput;
 
-//save when save button is pressed and update local storage
+//function to save when save button is pressed and update local storage
 function saveTasks(){
   for(i = 0; i <= 8; i++){
     taskInput = document.querySelector(`*[data-id="${i + 9}"]`).value;
-    console.log(taskInput);
     tasks[i] = taskInput;
-    console.log(tasks);
   };
-  //Array.prototype.push.apply(tasks,tasksToLoad);
 localStorage.setItem('savedTasks', JSON.stringify(tasks));
-console.log(tasks);
 };
 
-//event listener for button press
-var btns = document.querySelectorAll('button');
+//event listener for button press on all buttons
+var saveBtn = document.querySelectorAll('button');
 
-for (i of btns) {
+for (i of saveBtn) {
   i.addEventListener('click',saveTasks);
 }
