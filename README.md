@@ -23,7 +23,7 @@ By visiting the site, we get presented with an empty planner. After adding any t
 User Guide:
 ![Alt text](assets/img/page1.jpg?raw=true "Start guide")
 
-Page : https://snoopawoo.github.io/Quiz_Challenge/
+Page : https://snoopawoo.github.io/Planner_app_challenge/
 
 ## Credits
 
