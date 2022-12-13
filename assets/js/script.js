@@ -67,14 +67,13 @@ function saveTasks(){
     tasks[i] = taskInput;
   };
 localStorage.setItem('savedTasks', JSON.stringify(tasks));
+
+//timeout to show save progress
 popup.classList.remove('hide');
 var reset = setInterval(function (){
   clearTimeout(reset);
   popup.classList.add('hide');
 }, 600);
-
-//Show line for saving detailes!
-
 };
 
 //event listener for button press on all buttons
