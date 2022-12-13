@@ -87,3 +87,8 @@ textarea {
 .hide {
   display: none;
 }
+
+.current {
+  justify-content: center;
+  align-items: center;
+}

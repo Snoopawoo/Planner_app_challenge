@@ -1,7 +1,9 @@
 //declaring variables
 var taskwrapper = $('#taskbox');
+var currentDay = $('#currentDay');
 var startOfBusiness = moment(09, 'HH');
 var currentTime = moment().format('HH');
+var currentDate = moment().format('DD/MMM/YYYY');
 console.log(currentTime);
 var tasksToLoad = [];
 tasksToLoad = JSON.parse(localStorage.getItem('savedTasks'));
@@ -13,6 +15,12 @@ if(tasksToLoad == null){
   tasksToLoad[fill] = 'No Task';
   };
 };
+//display current day
+currentDay.append(
+  `<div class='row current'>
+      <p>${currentDate}</p>
+  </div>`
+  );
 
 //create and fill HTML structure
 while (startOfBusiness.hour() < 18) {
