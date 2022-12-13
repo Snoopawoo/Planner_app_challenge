@@ -16,17 +16,17 @@ if(tasksToLoad == null){
 //create and fill HTML structure
 while (startOfBusiness.hour() < 18) {
   taskwrapper.append(
-    `<div class='row'>
-        <div class='col-1'</div>
-          <p class='hour'>
+    `<div class='row time-block'>
+        <div class='col-1 row'</div>
+          <p class='hour '>
             ${startOfBusiness.format('ha')}
           </p>
         </div>
-        <div class='col-10' id = 'Line${startOfBusiness.format('H')}'>
-          <textarea id='text' data-id = '${startOfBusiness.format('H')}' name="text">${tasksToLoad[(startOfBusiness.format('H')) - 9]}</textarea>
+        <div class='col-10 row' >
+          <textarea id = 'Line${startOfBusiness.format('H')}' cols="120" data-id = '${startOfBusiness.format('H')}' name="text">${tasksToLoad[(startOfBusiness.format('H')) - 9]}</textarea>
         </div>
-        <div class='col-1'>
-          <button class='saveBtn'>Save</button>
+        <div class='col-1 row'>
+          <button class='saveBtn'>   <i class="fa-regular fa-floppy-disk">    </i></button>
         </div>
     </div>`
     );
@@ -66,6 +66,9 @@ function saveTasks(){
     tasks[i] = taskInput;
   };
 localStorage.setItem('savedTasks', JSON.stringify(tasks));
+
+//Show line for saving detailes!
+
 };
 
 //event listener for button press on all buttons
